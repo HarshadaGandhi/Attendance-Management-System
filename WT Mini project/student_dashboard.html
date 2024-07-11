@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>Student Dashboard</title>
+    <link rel="shortcut icon" href="../favicon.ico"> 
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        .dashboard {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .dashboard h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .subject-select {
+            margin-bottom: 20px;
+        }
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .attendance-table th, .attendance-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .attendance-table th {
+            background-color: #f2f2f2;
+        }
+        .attendance-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .attendance-table tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <h1>Student Dashboard</h1>
+            <div class="subject-select">
+                <label for="subject">Select Subject:</label>
+                <select name="subject" id="subject">
+                    <option value="math">Mathematics</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <!-- Add more subjects as needed -->
+                </select>
+            </div>
+            <div id="attendance-container"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('subject').addEventListener('change', function() {
+            var selectedSubject = this.value;
+            var attendanceContainer = document.getElementById('attendance-container');
+            attendanceContainer.innerHTML = ''; // Clear previous content
+            
+            // Simulated attendance data (replace with actual data from backend)
+            var attendanceData = {
+                math: 85,
+                science: 90,
+                history: 80
+                // Add more subjects and their attendance data as needed
+            };
+
+            // Display attendance for the selected subject
+            var attendanceTable = document.createElement('table');
+            attendanceTable.classList.add('attendance-table');
+            var tableHTML = '<thead><tr><th>Subject</th><th>Attendance (%)</th></tr></thead><tbody>';
+            tableHTML += '<tr><td>' + selectedSubject + '</td><td>' + attendanceData[selectedSubject] + '</td></tr>';
+            tableHTML += '</tbody>';
+            attendanceTable.innerHTML = tableHTML;
+            attendanceContainer.appendChild(attendanceTable);
+        });
+    </script>
+</body>
+</html>

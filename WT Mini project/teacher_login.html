@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <title>Teacher Login</title>
+    <link rel="shortcut icon" href="../favicon.ico"> 
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Teacher Login</h1>
+        </header>
+        <section>				
+            <div id="container_demo" >
+                <div id="wrapper">
+                    <div id="login" class="animate form">
+                        <form  action="teacher_login_script.php" method="post">  
+                            <h1>Log in</h1> 
+                            <p> 
+                                <label for="username" class="uname" data-icon="u" > Your email or username </label>
+                                <input id="username" name="username" required="required" type="text" placeholder="Your username or email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|[a-zA-Z0-9]{3,}" />
+                            </p>
+                            <p> 
+                                <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                                <input id="password" name="password" required="required" type="password" placeholder="Your password" pattern=".{3,}" /> 
+                            </p>
+                            <p class="login button"> 
+                                <input type="submit" value="Login" /> 
+                                <!-- <a href="teacher_dashboard.html">Login</a> -->
+                            </p>
+                            <p class="change_link">
+                                <a href="student_login.html" class="to_register">Student Login</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>  
+        </section>
+    </div>
+</body>
+</html>

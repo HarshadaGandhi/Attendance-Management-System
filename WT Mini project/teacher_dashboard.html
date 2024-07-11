@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Dashboard</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="teacher_dashboard_page.css" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Attendance Dashboard</h1>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Teacher Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Student Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add_new_student.html">Add New Student</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="classSelect">Select Class:</label>
+                <select id="classSelect" class="form-control">
+                    <option value="class1">Class 1</option>
+                    <option value="class2">Class 2</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="subjectSelect">Select Subject:</label>
+                <select id="subjectSelect" class="form-control">
+                    <option value="maths">Mathematics</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="dateInput">Select Date:</label>
+                <input type="date" id="dateInput" class="form-control">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <button class="btn btn-primary" onclick="markAttendance()">Submit</button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <table id="attendanceTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>Roll No.</th>
+                            <th>Student Name</th>
+                            <th>Attendance Status</th>
+                            <th>Attendence </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <button id="submitAttendanceBtn" class="btn btn-success" onclick="submitAttendance()" disabled>Submit Attendance</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    function markAttendance() {
+        const selectedClass = document.getElementById("classSelect").value;
+    // Make AJAX request to PHP script
+    //AJAX is used for communication between server and ebpage without loading the whole page.
+        $.ajax({
+            type: "POST",
+            url: "submit_attendance.php",
+            data: { selectedClass: selectedClass },
+            success: function(response) {
+            const students = JSON.parse(response);
+                const tableBody = document.getElementById("attendanceTable").getElementsByTagName("tbody")[0];
+                tableBody.innerHTML = "";
+                students.forEach(student => {
+                    const row = tableBody.insertRow();
+                    row.innerHTML = `
+                        <td>${student.rollno}</td>
+                        <td>${student.name}</td>
+                        <td>
+                            <button class="attendance-button present" onclick="toggleAttendance(this)">P</button>
+                            <button class="attendance-button absent" onclick="toggleAttendance(this)">A</button>
+                        </td>
+                        <td class="subject-attendance">0%</td> `;
+                });
+
+                document.getElementById("submitAttendanceBtn").disabled = false;
+            }
+        });
+    }
+
+    function toggleAttendance(button) {
+    const attendanceButtons = button.parentNode.querySelectorAll('.attendance-button');
+    attendanceButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+    button.classList.add('active');
+
+    // Change color based on button text
+    if (button.textContent === 'P') {
+        button.style.backgroundColor = 'green';
+    } else if (button.textContent === 'A') {
+        button.style.backgroundColor = 'red';
+    }
+}
+function submitAttendance() {
+    const tableRows = document.getElementById("attendanceTable").getElementsByTagName("tbody")[0].rows;
+    for (let i = 0; i < tableRows.length; i++) {
+        const row = tableRows[i];
+        const attendanceButtons = row.querySelectorAll('.attendance-button');
+        let presentCount = 0;
+        attendanceButtons.forEach(button => {
+            if (button.classList.contains('active') && button.textContent === 'P') {
+                presentCount++;
+            }
+        });
+
+        const totalButtons = attendanceButtons.length / 2; 
+        const attendancePercentage = (presentCount / totalButtons) * 100;
+        row.querySelector('.subject-attendance').textContent = attendancePercentage.toFixed(2) + '%';
+    }
+
+    alert('Attendance submitted successfully!');
+}
+</script>
+</body>
+</html>
+
+

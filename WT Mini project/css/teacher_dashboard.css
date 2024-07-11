@@ -1,0 +1,47 @@
+#wrapper {
+    width: 100%; /* Ensure the wrapper spans the entire width of the webpage */
+}
+
+.dashboard-box {
+    display: flex; /* Use flexbox layout */
+    justify-content: space-between; /* Distribute items evenly along the main axis */
+    align-items: center; /* Center items along the cross axis */
+    background-image: url("attendence (3).jpg"); /* Replace "path_to_your_image.jpg" with the path to your background image */
+    background-size: cover;
+    padding: 20px; /* Add padding inside the dashboard box */
+    border-radius: 10px; /* Add border radius to create rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    width: 100%; /* Ensure the dashboard box covers the entire width */
+}
+.margin-bottom {
+    margin-bottom: 20px;
+}
+.student-list {
+    background-color: #f9f9f9; 
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); 
+}
+
+.student-list table {
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+.student-list th,
+.student-list td {
+    padding: 8px;
+    text-align: left; 
+    border-bottom: 1px solid #ddd;
+}
+
+.student-list th {
+    background-color: #f2f2f2; 
+}
+
+.student-list .attendance {
+    font-weight: bold; 
+}
+
+
+

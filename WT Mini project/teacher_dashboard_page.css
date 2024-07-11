@@ -1,0 +1,44 @@
+.container {
+    margin-top: 12px; 
+}
+.header {
+    background-color: #f8f9fa;
+    padding: 20px 0; 
+}
+
+.header h1 {
+    margin: 0; 
+    font-size: 24px; 
+}
+
+.nav-item {
+    margin-left: 20px; 
+}
+
+.nav-link {
+    color: #333; 
+    font-size: 18px; 
+    text-decoration: none; 
+}
+
+.nav-link:hover {
+    color: #007bff; 
+}
+.attendance-button {
+    padding: 12px 20px; /* Increase padding to make buttons bigger */
+    font-size: 18px; 
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px; 
+}
+
+.attendance-button.present {
+    background-color: #28a745; 
+    color: #fff; 
+}
+
+.attendance-button.absent {
+    background-color: #dc3545; 
+    color: #fff; 
+}

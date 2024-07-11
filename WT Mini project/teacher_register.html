@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <title>Teacher Registration</title>
+    <link rel="shortcut icon" href="../favicon.ico"> 
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+    <link rel="stylesheet" type="text/css" href="css\teacher_registration.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Teacher Registration</h1>
+        </header>
+        <section>				
+            <div id="container_demo">
+                <div id="wrapper">
+                    <div id="register" class="animate form">
+                        <form action="teacher_registration_script.php" method="post">  
+                            <h1>Register</h1> 
+                            <p> 
+                                <label for="fullname" class="fname" data-icon="f"> Your full name </label>
+                                <input id="fullname" name="fullname" required="required" type="text" placeholder="Your full name" />
+                            </p>
+                            <p> 
+                                <label for="email" class="email" data-icon="e"> Your email </label>
+                                <input id="email" name="email" required="required" type="email" placeholder="Your email" />
+                            </p>
+                            <p> 
+                                <label for="username" class="uname" data-icon="u"> Choose a username </label>
+                                <input id="username" name="username" required="required" type="text" placeholder="Choose a username" />
+                            </p>
+                            <p> 
+                                <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                                <input id="password" name="password" required="required" type="password" placeholder="Your password" pattern=".{6,}" /> 
+                            </p>
+                            <p class="register button"> 
+                                <input type="submit" value="Register" /> 
+                            </p>
+                            <p class="change_link">
+                                <a href="teacher_login.html" class="to_login">Already registered? Log in</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>  
+        </section>
+    </div>
+</body>
+</html>

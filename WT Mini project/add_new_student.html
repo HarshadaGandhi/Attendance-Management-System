@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Set font family for the entire page */
+            background-color: #f4f4f4; /* Set background color */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        .container {
+            max-width: 600px; /* Set maximum width for the container */
+            margin: 120px auto; /* Center the container horizontally with some margin from the top */
+            padding: 20px; /* Add padding inside the container */
+            background-color: #fff; /* Set background color for the container */
+            border-radius: 5px; /* Add rounded corners to the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+        }
+
+        h2 {
+            margin-top: 0; /* Remove default margin from the heading */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block; 
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box; 
+            margin-top: 5px; 
+        }
+
+        button {
+            padding: 10px 20px; 
+            background-color: #007bff; 
+            color: #fff; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+
+        button:hover {
+            background-color: #0056b3; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add New Student</h2>
+        <form id="addStudentForm" onsubmit="submitForm(event)" action="add_new_student.php" method="post">
+            <div class="form-group">
+                <label for="rollNo">Roll Number:</label>
+                <input type="text" class="form-control" id="rollNo" name="rollNo" required>
+            </div>
+            <div class="form-group">
+                <label for="studentName">Name:</label>
+                <input type="text" class="form-control" id="studentName" name="studentName" required>
+            </div>
+            <div class="form-group">
+                <label for="studentClass">Class:</label>
+                <select class="form-control" id="studentClass" name="studentClass" required>
+                    <option value="class1">Class 1</option>
+                    <option value="class2">Class 2</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Student</button>
+        </form>
+    </div>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            alert('New student added successfully!');
+            document.getElementById('addStudentForm').reset();
+        }
+    </script>        
+</body>
+</html>
